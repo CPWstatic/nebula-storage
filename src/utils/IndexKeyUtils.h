@@ -122,8 +122,7 @@ public:
                    .append(reinterpret_cast<const char*>(&dt.hour), sizeof(int8_t))
                    .append(reinterpret_cast<const char*>(&dt.minute), sizeof(int8_t))
                    .append(reinterpret_cast<const char*>(&dt.sec), sizeof(int8_t))
-                   .append(reinterpret_cast<const char*>(&dt.microsec), sizeof(int32_t))
-                   .append(reinterpret_cast<const char*>(&dt.timezone), sizeof(int32_t));
+                   .append(reinterpret_cast<const char*>(&dt.microsec), sizeof(int32_t));
                 return buf;
             }
             default :
@@ -250,9 +249,6 @@ public:
                        sizeof(int8_t));
                 memcpy(reinterpret_cast<void*>(&dt.microsec),
                        &raw[sizeof(int16_t) + 5 * sizeof(int8_t)],
-                       sizeof(int32_t));
-                memcpy(reinterpret_cast<void*>(&dt.timezone),
-                       &raw[sizeof(int16_t) + 5 * sizeof(int8_t) + sizeof(int32_t)],
                        sizeof(int32_t));
                 v.setDateTime(dt);
                 break;
